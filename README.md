@@ -1,45 +1,151 @@
-# Adaptive framework
+# Adaptive Framework Dataset for Quantum-Safe Real-Time Gross Settlement (RTGS)
 
-This repository contains the dataset for an Adaptive Framework designed for quantum-safe Real-Time Gross Settlement (RTGS) environments. The dataset simulates real-time transaction processing across varying network channel conditions, demonstrating how the framework dynamically adapts its cryptographic security modes based on the monitored Quantum Bit Error Rate (QBER).
+## Abstract
 
-## Dataset Overview
-
-The dataset tracks transactional performance, security modes, and processing overhead across four distinct channel states. 
-
-### Feature Descriptions
-
-* **`tx_id`**: A unique incremental identifier assigned to each transaction sequence.
-* **`qber`**: The simulated Quantum Bit Error Rate. Higher values signify increased channel noise or active interception attempts.
-* **`ch_state`**: The classified state of the communication channel determined by network telemetry and QBER thresholds:
-    * `CLEAN`
-    * `NOISY`
-    * `ATTACKED`
-    * `DEGRADED`
-* **`mode`**: The adapted cryptographic mode triggered by the system state:
-    * `Hybrid`: Active during standard or slightly noisy environments (`CLEAN`/`NOISY`) to balance post-quantum security with baseline operations.
-    * `PQC-Only`: Triggered during high-risk conditions (`ATTACKED`) to isolate traffic entirely using Post-Quantum Cryptography.
-    * `Classical-Fallback`: Deployed during severe network degradation (`DEGRADED`) to keep settlement systems operational by reverting to lightweight, optimized classical primitives when quantum key distribution is unviable.
-* **`lat_classical`**: The baseline latency observed when using standard classical cryptographic routines (measured in milliseconds).
-* **`lat_proposed`**: The total latency observed under the active mode of the proposed adaptive framework (measured in milliseconds).
-* **`overhead_ms`**: The raw computational and network latency overhead introduced by the adaptive logic, calculated as:
-    $$overhead\_ms = lat\_proposed - lat\_classical$$
-* **`overhead_pct`**: The relative percentage increase or decrease in processing time compared to the classical baseline.
+This repository contains a synthetic dataset developed to evaluate an Adaptive Framework for Quantum-Safe Real-Time Gross Settlement (RTGS) environments. The dataset simulates financial transaction processing under varying Quantum Key Distribution (QKD) channel conditions by monitoring the Quantum Bit Error Rate (QBER). Based on the observed communication state, the framework dynamically switches between Hybrid Cryptography, Post-Quantum Cryptography (PQC), and Classical Fallback modes to balance security, availability, and computational efficiency. The dataset is intended for researchers working in quantum cybersecurity, financial technology, adaptive security architectures, and post-quantum cryptography.
 
 ---
 
-## Technical Architecture Mapping
+## Research Motivation
 
-The transactional logs reveal three key performance patterns hardcoded into the adaptive logic:
+Traditional RTGS systems are designed around static cryptographic mechanisms that cannot dynamically respond to fluctuating quantum communication channel conditions. Future financial infrastructures integrating Quantum Key Distribution require adaptive security mechanisms capable of maintaining confidentiality while ensuring uninterrupted settlement operations.
 
-1.  **Standard Performance Line (`CLEAN` / `NOISY`)**: Uses the `Hybrid` cryptographic mode. It maintains a steady processing latency overhead to guarantee structural safety under nominal operating bounds.
-2.  **Attack Defiance Mode (`ATTACKED`)**: Shifts directly to `PQC-Only` or isolated `Hybrid` security structures to prioritize absolute data integrity at the expense of computational overhead.
-3.  **High-Availability Fallback (`DEGRADED`)**: When QBER scales beyond stable operational thresholds, the framework drops into a `Classical-Fallback` state. This minimizes performance penalties to ensure continuous financial clearing, occasionally resulting in negative relative overhead profiles (faster than complex hybrid processing).
+This dataset was developed to benchmark adaptive cryptographic switching strategies under multiple simulated communication scenarios.
 
 ---
 
-## Quick Start for Data Analysis
+# Dataset Information
 
-To analyze the file locally using Python, verify that you have `pandas` installed:
+| Property | Value |
+|----------|-------|
+| Dataset Name | Adaptive Framework Dataset |
+| Version | 1.0.0 |
+| Domain | Quantum Cybersecurity |
+| Application | Quantum-Safe RTGS |
+| Format | CSV |
+| Language | English |
+| License | CC BY 4.0 (Recommended) |
+| Author | R. Naveen Nithya Kalyan |
 
-```bash
+---
+
+# Dataset Features
+
+| Feature | Description |
+|----------|-------------|
+| tx_id | Unique transaction identifier |
+| qber | Simulated Quantum Bit Error Rate |
+| ch_state | Communication channel state |
+| mode | Adaptive cryptographic mode |
+| lat_classical | Classical processing latency (ms) |
+| lat_proposed | Proposed framework latency (ms) |
+| overhead_ms | Additional latency introduced |
+| overhead_pct | Percentage latency overhead |
+
+---
+
+# Channel States
+
+- CLEAN
+- NOISY
+- ATTACKED
+- DEGRADED
+
+---
+
+# Adaptive Modes
+
+## Hybrid
+
+Balances security and computational efficiency during nominal channel conditions.
+
+## PQC-Only
+
+Activated when potential attacks are detected to maximize cryptographic protection.
+
+## Classical-Fallback
+
+Maintains service availability when quantum communication becomes unstable.
+
+---
+
+# Repository Structure
+
+```
+Adaptive-Framework-Dataset/
+
+adaptive_framework_dataset.csv
+
+README.md
+
+LICENSE
+
+CITATION.cff
+
+metadata.json
+
+CHANGELOG.md
+```
+
+---
+
+# Requirements
+
+```
 pip install pandas
+```
+
+---
+
+# Loading the Dataset
+
+```python
+import pandas as pd
+
+df = pd.read_csv("adaptive_framework_dataset.csv")
+
+print(df.head())
+```
+
+---
+
+# Potential Research Applications
+
+- Quantum Cybersecurity
+- Post-Quantum Cryptography
+- Adaptive Security Systems
+- Financial Security
+- Real-Time Gross Settlement
+- QKD Performance Benchmarking
+- Secure Banking Infrastructure
+- Intelligent Cryptographic Switching
+
+---
+
+# Citation
+
+Please cite this dataset using the DOI assigned through Zenodo.
+
+---
+
+# Keywords
+
+Quantum Computing
+
+Quantum Cybersecurity
+
+QKD
+
+Post Quantum Cryptography
+
+Adaptive Security
+
+RTGS
+
+Banking
+
+Financial Systems
+
+Cybersecurity
+
+Benchmark Dataset

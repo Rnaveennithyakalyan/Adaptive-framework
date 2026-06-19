@@ -1,0 +1,37 @@
+{
+    "title":"Adaptive Framework Dataset for Quantum-Safe RTGS",
+
+    "version":"1.0.0",
+
+    "author":"R. Naveen Nithya Kalyan",
+
+    "license":"CC BY 4.0",
+
+    "language":"English",
+
+    "format":"CSV",
+
+    "domain":"Quantum Cybersecurity",
+
+    "application":"Real-Time Gross Settlement",
+
+    "keywords":[
+
+        "Quantum",
+
+        "Cybersecurity",
+
+        "QKD",
+
+        "PQC",
+
+        "RTGS",
+
+        "Adaptive Security"
+
+    ],
+
+    "containsSyntheticData":true,
+
+    "peerReviewed":false
+}

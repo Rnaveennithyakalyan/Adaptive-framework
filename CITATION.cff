@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+
+title: "Adaptive Framework Dataset for Quantum-Safe Real-Time Gross Settlement (RTGS)"
+
+message: "If you use this dataset in your research, please cite it."
+
+type: dataset
+
+authors:
+
+  - given-names: "R. Naveen Nithya Kalyan"
+
+version: "1.0.0"
+
+date-released: "2026-06-18"
+
+license: "CC-BY-4.0"
+
+repository-code: "https://github.com/Rnaveennithyakalyan/Adaptive-framework"
+
+abstract: >
+  Synthetic dataset for evaluating adaptive cryptographic
+  switching mechanisms in Quantum-Safe RTGS systems.
+
+keywords:
+
+  - Quantum Computing
+  - Quantum Cybersecurity
+  - QKD
+  - PQC
+  - RTGS
+  - Adaptive Security
+  - Financial Security
